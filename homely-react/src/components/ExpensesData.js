@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+  } from 'material-ui/Table';
+  
 class ExpensesData extends Component {
     constructor(props){
         super(props)
@@ -21,8 +29,24 @@ class ExpensesData extends Component {
             <div>
                 {this.state.expenses.map((expense)=> {
                     return(
-                        <div key={expense.id} >
-                        <h4>{expense.name}</h4>
+                        <div>
+                        <h4>Expense</h4>
+                        <Table key={expense.id}>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHeaderColumn>Name</TableHeaderColumn>
+                            <TableHeaderColumn>Price</TableHeaderColumn>
+                            <TableHeaderColumn>Due Date</TableHeaderColumn>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow>
+                            <TableRowColumn>{expense.name}</TableRowColumn>
+                            <TableRowColumn>$ {expense.price}</TableRowColumn>
+                            <TableRowColumn>{expense.due_date}</TableRowColumn>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
                         </div>
                     )
                 })}
